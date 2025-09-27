@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 16, 16, 32;
+}
+
+@layer base {
+  :root {
+    --background: 220 30% 3%;
+    --foreground: 220 10% 98%;
+    --card: 220 30% 6%;
+    --card-foreground: 220 10% 98%;
+    --popover: 220 30% 6%;
+    --popover-foreground: 220 10% 98%;
+    --primary: 270 100% 70%;
+    --primary-foreground: 220 30% 3%;
+    --secondary: 220 30% 12%;
+    --secondary-foreground: 220 10% 98%;
+    --muted: 220 30% 12%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 180 100% 70%;
+    --accent-foreground: 220 30% 3%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 10% 98%;
+    --border: 220 30% 18%;
+    --input: 220 30% 12%;
+    --ring: 270 100% 70%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #000a1a 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .neon-glow {
+    box-shadow: 
+      0 0 5px theme(colors.primary.DEFAULT),
+      0 0 10px theme(colors.primary.DEFAULT),
+      0 0 15px theme(colors.primary.DEFAULT),
+      0 0 20px theme(colors.primary.DEFAULT);
+  }
+  
+  .spectrum-text {
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4, #10b981, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+  
+  @keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+  }
+  
+  .console-window {
+    background: linear-gradient(135deg, rgba(30, 30, 60, 0.9) 0%, rgba(10, 10, 30, 0.9) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid #8b5cf6;
+    animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #8b5cf6; }
+  }
+  
+  .glitch-flash {
+    animation: glitch-flash 0.3s ease-out;
+  }
+  
+  @keyframes glitch-flash {
+    0% { opacity: 1; }
+    25% { opacity: 0.8; transform: translateX(-2px); }
+    50% { opacity: 1; transform: translateX(2px); }
+    75% { opacity: 0.9; transform: translateX(-1px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  
+  .lazy-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .lazy-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .tokenize-btn {
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcd3c);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .tokenize-btn:hover {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+    transform: translateY(-2px);
+  }
+}
